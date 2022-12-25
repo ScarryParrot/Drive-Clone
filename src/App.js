@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Bin from './Components/Bin/Bin'
+import Computer from './Components/Computer/Computer'
+import Error from './Components/Error'
+import Mydrive from './Components/MyDrive/Mydrive'
+import Navbar from "./Components/Navbar/Navbar"
+import Recent from './Components/Recent/Recent'
+import SharedWM from './Components/SharedWM/SharedWM'
+import Starred from './Components/Starred'
+import Storage from './Components/Storage/Storage'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/bin' element={<Bin />} />
+          <Route path='/starred' element={<Starred />} />
+          <Route path='/recent' element={<Recent />} />
+          <Route path='/Shared_with_me' element={<SharedWM />} />
+          <Route path='/my_drive' element={<Mydrive />} />
+          <Route path='/storage' element={<Storage />} />
+          <Route path='/Computer' element={<Computer />} />
+          <Route path='*' element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
